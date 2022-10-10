@@ -19,7 +19,21 @@ public partial class ImportArticlesPage : ContentPage
         {
             PickerTitle = "Importer fichier d'articles"
         };
-            await FilePicker.PickAsync(options);
+            var result = await FilePicker.PickAsync(options);
+            if (result != null)
+            {
+                if (!result.FileName.EndsWith(".xlsx"))
+                {
+                    throw new Exception("Veuillez choisir un fichier .xlsx");
+                }
+                using (var stream = await result.OpenReadAsync())
+                using (var ms = new MemoryStream())
+                {
+                    stream.CopyTo(ms);
+                    var bytes = ms.ToArray();
+                    DisplayAlert("Notification", "Number of bytes read " + bytes.Length, "OK");
+                }
+            }
         }
         catch (Exception ex)
         {
