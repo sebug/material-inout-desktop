@@ -76,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
           name: mauibeach-windows-ci-build
-          path: bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/*.msix
+          path: bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/material-inout-desktop_1.0.0.1_Test/*.msix
 
 # MAUI iOS Build
   build-ios:
