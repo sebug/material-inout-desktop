@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>material-inout-desktop</ApplicationTitle>
+		<ApplicationTitle>Matériel In/Out</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>ch.orpcvalavran.material_inout_desktop</ApplicationId>
