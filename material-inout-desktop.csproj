@@ -15,7 +15,7 @@
 		<ApplicationTitle>material-inout-desktop</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.material_inout_desktop</ApplicationId>
+		<ApplicationId>ch.orpcvalavran.material_inout_desktop</ApplicationId>
 		<ApplicationIdGuid>39da241a-63cf-4c25-bb47-a9777cbc1248</ApplicationIdGuid>
 
 		<!-- Versions -->
