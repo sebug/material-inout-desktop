@@ -1,4 +1,7 @@
-﻿namespace material_inout_desktop;
+﻿using material_inout_desktop.Excel;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace material_inout_desktop;
 
 public static class MauiProgram
 {
@@ -12,6 +15,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+
+		builder.Services.AddSingleton<ImportArticlesPage>();
+		builder.Services.AddTransient<IArticlesListReader, ArticlesListReader>();
 
 		return builder.Build();
 	}

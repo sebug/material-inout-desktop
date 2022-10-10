@@ -1,9 +1,13 @@
+using material_inout_desktop.Excel;
+
 namespace material_inout_desktop;
 
 public partial class ImportArticlesPage : ContentPage
 {
-	public ImportArticlesPage()
+    private readonly IArticlesListReader ListReader;
+	public ImportArticlesPage(IArticlesListReader listReader)
 	{
+        this.ListReader = listReader;
 		InitializeComponent();
 	}
 
@@ -31,7 +35,8 @@ public partial class ImportArticlesPage : ContentPage
                 {
                     stream.CopyTo(ms);
                     var bytes = ms.ToArray();
-                    DisplayAlert("Notification", "Number of bytes read " + bytes.Length, "OK");
+                    var lines = ListReader.ReadExcelFile(bytes);
+                    DisplayAlert("Notification", "Number of lines read " + lines.Count, "OK");
                 }
             }
         }
