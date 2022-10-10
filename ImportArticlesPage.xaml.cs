@@ -15,10 +15,9 @@ public partial class ImportArticlesPage : ContentPage
         });
         var options = new PickOptions
         {
-            PickerTitle = "Importer fichier d'articles",
-            FileTypes = customFileType
+            PickerTitle = "Importer fichier d'articles"
         };
-        FilePicker.Default.PickAsync(options);
+        FilePicker.PickAsync(options);
     }
 }
 
