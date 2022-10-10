@@ -3,12 +3,22 @@
     x:Class="material_inout_desktop.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:material_inout_desktop"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:local="clr-namespace:material_inout_desktop">
 
+    <FlyoutItem Title="Sortie Matériel">
+    <Tab>
     <ShellContent
         Title="Sortie Matériel"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
-
+    </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Configuration">
+    <Tab>
+        <ShellContent
+        Title="Configuration"
+        ContentTemplate="{DataTemplate local:ConfigurationPage}"
+        Route="ConfigurationPage" />
+    </Tab>
+    </FlyoutItem>
 </Shell>
