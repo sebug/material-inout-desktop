@@ -7,6 +7,17 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
+	protected override void OnAppearing()
+	{
+		Task.Run(() =>
+		{
+			Dispatcher.Dispatch(() =>
+			{
+				barCodeInput.Focus();
+			});
+		});
+	}
+
 	void OnBarCodeInputCompleted(object sender, EventArgs e)
 	{
    		string text = ((Entry)sender).Text;
