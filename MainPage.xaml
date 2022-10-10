@@ -21,6 +21,9 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
+
+            <Entry x:Name="barCodeInput"
+                   Completed="OnBarCodeInputCompleted" />
             
 
         </VerticalStackLayout>
