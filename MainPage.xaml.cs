@@ -21,7 +21,6 @@ public partial class MainPage : ContentPage
 	void OnBarCodeInputCompleted(object sender, EventArgs e)
 	{
    		string text = ((Entry)sender).Text;
-		DisplayAlert("Bar Code Scanned", text, "OK");
 	}
 }
 
