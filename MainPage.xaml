@@ -24,6 +24,10 @@
 
             <Entry x:Name="barCodeInput"
                    Completed="OnBarCodeInputCompleted" />
+
+            <Label Text="No bar code scanned"
+                   x:Name="scanDisplay"
+                   HorizontalOptions="Center" />
             
 
         </VerticalStackLayout>
