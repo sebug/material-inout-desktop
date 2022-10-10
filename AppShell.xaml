@@ -21,4 +21,12 @@
         Route="ConfigurationPage" />
     </Tab>
     </FlyoutItem>
+        <FlyoutItem Title="Importer Liste des Articles">
+    <Tab>
+        <ShellContent
+        Title="Importer Liste des Articles"
+        ContentTemplate="{DataTemplate local:ImportArticlesPage}"
+        Route="ImportArticlesPage" />
+    </Tab>
+    </FlyoutItem>
 </Shell>
