@@ -7,17 +7,24 @@ public partial class ImportArticlesPage : ContentPage
 		InitializeComponent();
 	}
 
-    async void ImportButtonClicked(object sender, EventArgs args)
+    void ImportButtonClicked(object sender, EventArgs args)
     {
-        var customFileType = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-        {
-            { DevicePlatform.macOS, new List<string> { "xlsx" } }
-        });
+        LoadExcelArticlesFile();
+    }
+
+    async Task LoadExcelArticlesFile()
+    {
+        try {
         var options = new PickOptions
         {
             PickerTitle = "Importer fichier d'articles"
         };
-        FilePicker.PickAsync(options);
+            await FilePicker.PickAsync(options);
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Error", ex.Message, "OK");
+        }
     }
 }
 
