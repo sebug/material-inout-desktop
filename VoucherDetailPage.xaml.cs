@@ -40,7 +40,10 @@ public partial class VoucherDetailPage : ContentPage
     }
     .address {
         float: right;
-        clear: both;
+    }
+    .logo {
+        clear: left;
+        float: left;
     }
     h1 {
         clear: both;
@@ -49,6 +52,7 @@ public partial class VoucherDetailPage : ContentPage
     </head>
     <body>
     <p><button class=""print"">Print</button></p>
+    <p class=""logo""><img width=""200"" src=""{{logo_url}}"" /></p>
     <p class=""address"">ORPC Valavran,<br />
 Rue du Village 27<br />
 1294 Genthod<br />
@@ -89,7 +93,8 @@ Tél. +41 22 774 08 06</p>
                     var voucher = ArticleRepository.GetVoucherById(voucherId);
                     string html = TemplateHtml.Replace("{{voucherId}}", VoucherId)
                         .Replace("{{name}}", voucher.Name)
-                        .Replace("{{createdDate}}", voucher.CreatedDate.ToString("dd.MM.yyyy"));
+                        .Replace("{{createdDate}}", voucher.CreatedDate.ToString("dd.MM.yyyy"))
+                        .Replace("{{logo_url}}", OrganizationLogo.DATA_URL);
 
                     var voucherLines = ArticleRepository.GetVoucherLinesByVoucherId(voucherId);
                     html = html.Replace("{{lines}}", GetVoucherLinesTable(voucherLines));
