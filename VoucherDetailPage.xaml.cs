@@ -1,3 +1,4 @@
+using System.Text;
 using System.Windows.Input;
 using material_inout_desktop.MaterialStore;
 
@@ -28,6 +29,9 @@ public partial class VoucherDetailPage : ContentPage
     <h1>Bon de Sortie {{voucherId}}</h1>
     <p>Pour: {{name}}</p>
     <p>Date de création: {{createdDate}}</p>
+
+    {{lines}}
+
     <script>
     let printButton = document.querySelector('.print');
     printButton.addEventListener('click', function () {
@@ -57,6 +61,10 @@ public partial class VoucherDetailPage : ContentPage
                     string html = TemplateHtml.Replace("{{voucherId}}", VoucherId)
                         .Replace("{{name}}", voucher.Name)
                         .Replace("{{createdDate}}", voucher.CreatedDate.ToString("dd.MM.yyyy"));
+
+                    var voucherLines = ArticleRepository.GetVoucherLinesByVoucherId(voucherId);
+                    html = html.Replace("{{lines}}", GetVoucherLinesTable(voucherLines));
+
                     voucherDetailView.Source = new HtmlWebViewSource
                     {
                         Html =  html
@@ -69,5 +77,28 @@ public partial class VoucherDetailPage : ContentPage
 			});
 		});
 	}
+
+    private string GetVoucherLinesTable(List<VoucherLine> voucherLines)
+    {
+        var sb = new StringBuilder();
+        sb.AppendLine("<table>");
+        sb.AppendLine("<thead>");
+        sb.AppendLine("<tr>");
+        sb.AppendLine("<th>EAN</th>");
+        sb.AppendLine("<th>Libellé</th>");
+        sb.AppendLine("</tr>");
+        sb.AppendLine("</thead>");
+        sb.AppendLine("<tbody>");
+        foreach (var voucherLine in voucherLines)
+        {
+            sb.AppendLine("<tr>");
+            sb.AppendLine("<td>" + voucherLine.EAN + "</td>");
+            sb.AppendLine("<td>" + voucherLine.Label + "</td>");
+            sb.AppendLine("</tr>");
+        }
+        sb.AppendLine("</tbody>");
+        sb.AppendLine("</table>");
+        return sb.ToString();
+    }
 }
 
