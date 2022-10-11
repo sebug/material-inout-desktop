@@ -70,6 +70,8 @@ public partial class MainPage : ContentPage
 			DisplayAlert("Erreur", "Veuillez rentrer le nom du/de la responsable", "OK");
 			return;
 		}
+		var voucher = ArticleRepository.CreateVoucher(nameInput.Text);
+		DisplayAlert("Information", "Bon de sortie crée avec ID " + voucher.Id, "OK");
 	}
 
 	public void RemoveArticleFromList(Article article)

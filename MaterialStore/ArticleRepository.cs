@@ -21,6 +21,7 @@ public class ArticleRepository : IArticleRepository
         }
         _conn = new SQLiteConnection(_dbPath);
         _conn.CreateTable<Article>();
+        _conn.CreateTable<Voucher>();
     }
 
     public void EnsureArticle(Article article)
@@ -52,5 +53,16 @@ public class ArticleRepository : IArticleRepository
     {
         Init();
         return _conn.Table<Article>().FirstOrDefault(art => art.EAN == ean);
+    }
+
+    public Voucher CreateVoucher(string name)
+    {
+        var voucher = new Voucher
+        {
+            Name = name,
+            CreatedDate = DateTimeOffset.Now
+        };
+        _conn.Insert(voucher);
+        return voucher;
     }
 }

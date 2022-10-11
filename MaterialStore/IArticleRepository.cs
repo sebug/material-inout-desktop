@@ -5,4 +5,5 @@ public interface IArticleRepository
     void EnsureArticle(Article article);
     List<Article> GetAllArticles();
     Article? GetByEAN(string ean);
+    Voucher CreateVoucher(string name);
 }
