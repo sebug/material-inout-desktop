@@ -64,7 +64,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Install MAUI Workload
-        run: dotnet workload install maui --ignore-failed-sources
+        run: dotnet workload install maui --ignore-failed-sources --sdk-version 6.0.400
 
       - name: Restore Dependencies
         run: dotnet restore material-inout-desktop.csproj
