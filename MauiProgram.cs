@@ -1,4 +1,5 @@
 ﻿using material_inout_desktop.Excel;
+using material_inout_desktop.MaterialStore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace material_inout_desktop;
@@ -18,6 +19,9 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<ImportArticlesPage>();
 		builder.Services.AddTransient<IArticlesListReader, ArticlesListReader>();
+
+		string dbPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "articles.db3");
+		builder.Services.AddSingleton<IArticleRepository>(s => ActivatorUtilities.CreateInstance<ArticleRepository>(s, dbPath));
 
 		return builder.Build();
 	}

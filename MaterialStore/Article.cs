@@ -10,5 +10,5 @@ public class Article
     [Unique]
     public string EAN { get; set; }
     public string Mnemonic { get; set; }
-    public string Description { get; set; }
+    public string Label { get; set; }
 }
