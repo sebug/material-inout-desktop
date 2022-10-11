@@ -80,6 +80,8 @@ public partial class MainPage : ContentPage
 				Label = article.Label	
 			});
 		}
+		_articles = new List<Article>();
+		articlesListView.ItemsSource = _articles;
 		DisplayAlert("Information", "Bon de sortie crée avec ID " + voucher.Id, "OK");
 	}
 
