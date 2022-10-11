@@ -63,6 +63,15 @@ public partial class MainPage : ContentPage
 		barCodeInput.Focus();
     }
 
+	void CreateVoucher(object sender, EventArgs args)
+	{
+		if (String.IsNullOrEmpty(nameInput.Text))
+		{
+			DisplayAlert("Erreur", "Veuillez rentrer le nom du/de la responsable", "OK");
+			return;
+		}
+	}
+
 	public void RemoveArticleFromList(Article article)
 	{
 		if (article == null)

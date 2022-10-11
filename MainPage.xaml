@@ -21,18 +21,11 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <Label Text="Nom de la personne:" />
-
-            <Entry x:Name="nameInput" />
-
-            <Button x:Name="createBon"
-                Text="Créer bon de sortie" />
-
 
             <Entry x:Name="barCodeInput"
                    Completed="OnBarCodeInputCompleted" />
 
-            <CollectionView x:Name="articlesListView">
+            <CollectionView x:Name="articlesListView" HeightRequest="400">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -52,6 +45,15 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+            <Label Text="Nom du responsable:" />
+
+            <Entry x:Name="nameInput" />
+
+            <Button
+                Text="Créer bon de sortie"
+                Clicked="CreateVoucher"
+                 />
 
         </VerticalStackLayout>
     </ScrollView>
