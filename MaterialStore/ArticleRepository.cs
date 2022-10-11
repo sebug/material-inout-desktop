@@ -22,6 +22,7 @@ public class ArticleRepository : IArticleRepository
         _conn = new SQLiteConnection(_dbPath);
         _conn.CreateTable<Article>();
         _conn.CreateTable<Voucher>();
+        _conn.CreateTable<VoucherLine>();
     }
 
     public void EnsureArticle(Article article)
@@ -70,5 +71,12 @@ public class ArticleRepository : IArticleRepository
     {
         Init();
         return _conn.Table<Voucher>().OrderByDescending(voucher => voucher.CreatedDate).ToList();
+    }
+
+    public VoucherLine AddVoucherLine(VoucherLine voucherLine)
+    {
+        Init();
+        _conn.Insert(voucherLine);
+        return voucherLine;
     }
 }

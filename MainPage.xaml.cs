@@ -71,6 +71,15 @@ public partial class MainPage : ContentPage
 			return;
 		}
 		var voucher = ArticleRepository.CreateVoucher(nameInput.Text);
+		foreach (var article in _articles)
+		{
+			ArticleRepository.AddVoucherLine(new VoucherLine
+			{
+				VoucherId = voucher.Id,
+				EAN = article.EAN,
+				Label = article.Label	
+			});
+		}
 		DisplayAlert("Information", "Bon de sortie crée avec ID " + voucher.Id, "OK");
 	}
 

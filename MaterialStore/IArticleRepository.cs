@@ -8,4 +8,6 @@ public interface IArticleRepository
     Voucher CreateVoucher(string name);
 
     List<Voucher> GetAllVouchers();
+
+    VoucherLine AddVoucherLine(VoucherLine voucherLine);
 }
