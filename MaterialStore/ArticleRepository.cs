@@ -70,7 +70,13 @@ public class ArticleRepository : IArticleRepository
     public List<Voucher> GetAllVouchers()
     {
         Init();
-        return _conn.Table<Voucher>().OrderByDescending(voucher => voucher.CreatedDate).ToList();
+        var result = _conn.Table<Voucher>().OrderByDescending(voucher => voucher.CreatedDate).ToList();
+        foreach (var voucher in result)
+        {
+            voucher.VoucherLineCount =
+                _conn.Table<VoucherLine>().Count(line => line.VoucherId == voucher.Id);
+        }
+        return result;
     }
 
     public VoucherLine AddVoucherLine(VoucherLine voucherLine)

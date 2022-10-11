@@ -13,4 +13,7 @@ public class Voucher
     public DateTimeOffset CreatedDate { get; set; }
 
     public DateTimeOffset? ReturnedDate { get; set; }
+
+    [Ignore]
+    public int VoucherLineCount { get; set; }
 }
