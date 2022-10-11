@@ -72,15 +72,6 @@ jobs:
       - name: Build MAUI Windows
         run: dotnet publish material-inout-desktop.csproj -c Release -f net6.0-windows10.0.19041.0 --no-restore
 
-      - name: List contents of the release directory
-        run: dir bin/Release/net6.0-windows10.0.19041.0/win10-x64
-
-      - name: Upload Full Folder
-        uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
-        with:
-          name: materialinout-windows-ci-build-full
-          path: bin/Release/net6.0-windows10.0.19041.0
-
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
