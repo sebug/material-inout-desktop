@@ -50,5 +50,15 @@ public partial class VoucherDetailPage : ContentPage
 			});
 		});
 	}
+
+    void PrintButtonClicked(object sender, EventArgs args)
+    {
+		PrintPage();
+    }
+
+    async Task PrintPage()
+    {
+        await DisplayAlert("Information", "Bon de sortie imprimé", "OK");
+    }
 }
 

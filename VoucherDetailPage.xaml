@@ -7,7 +7,7 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-        <Button x:Name="printButton" Text="Imprimer" HorizontalOptions="End" />
+        <Button x:Name="printButton" Text="Imprimer" HorizontalOptions="End" Clicked="PrintButtonClicked" />
         <WebView x:Name="voucherDetailView" HeightRequest="600" />
     </VerticalStackLayout>
 
