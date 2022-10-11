@@ -51,6 +51,7 @@
 	<ItemGroup>
 	  <PackageReference Include="DocumentFormat.OpenXml" Version="2.18.0" />
 	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+	  <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
 	</ItemGroup>
 
 </Project>

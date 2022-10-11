@@ -1,9 +1,13 @@
-﻿namespace material_inout_desktop;
+﻿using material_inout_desktop.MaterialStore;
+
+namespace material_inout_desktop;
 
 public partial class MainPage : ContentPage
 {
-	public MainPage()
+	private readonly IArticleRepository ArticleRepository;
+	public MainPage(IArticleRepository articleRepository)
 	{
+		ArticleRepository = articleRepository;
 		InitializeComponent();
 	}
 
@@ -21,7 +25,14 @@ public partial class MainPage : ContentPage
 	void OnBarCodeInputCompleted(object sender, EventArgs e)
 	{
    		string text = ((Entry)sender).Text;
-		scanDisplay.Text = text;
+		if (!String.IsNullOrEmpty(text))
+		{
+			var article = ArticleRepository.GetByEAN(text);
+			if (article != null)
+			{
+				scanDisplay.Text = article.Label;
+			}
+		}
 	}
 }
 
