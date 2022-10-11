@@ -13,6 +13,14 @@
         Route="MainPage" />
     </Tab>
     </FlyoutItem>
+    <FlyoutItem Title="Bons de Sortie">
+        <Tab>
+            <ShellContent
+                Title="Bons de Sortie"
+                ContentTemplate="{DataTemplate local:VoucherListPage}"
+                Route="VoucherListPage" />
+        </Tab>
+    </FlyoutItem>
     <FlyoutItem Title="Configuration">
     <Tab>
         <ShellContent

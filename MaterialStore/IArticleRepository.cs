@@ -6,4 +6,6 @@ public interface IArticleRepository
     List<Article> GetAllArticles();
     Article? GetByEAN(string ean);
     Voucher CreateVoucher(string name);
+
+    List<Voucher> GetAllVouchers();
 }

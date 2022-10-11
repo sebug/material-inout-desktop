@@ -65,4 +65,10 @@ public class ArticleRepository : IArticleRepository
         _conn.Insert(voucher);
         return voucher;
     }
+
+    public List<Voucher> GetAllVouchers()
+    {
+        Init();
+        return _conn.Table<Voucher>().OrderByDescending(voucher => voucher.CreatedDate).ToList();
+    }
 }
