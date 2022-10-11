@@ -20,6 +20,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<ImportArticlesPage>();
 		builder.Services.AddTransient<VoucherListPage>();
+		builder.Services.AddTransient<VoucherDetailPage>();
 		builder.Services.AddTransient<IArticlesListReader, ArticlesListReader>();
 
 		string dbPath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "articles.db3");
