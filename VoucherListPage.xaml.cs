@@ -31,5 +31,26 @@ public partial class VoucherListPage : ContentPage
 			});
 		});
 	}
+
+    void ShowVoucherDetailsButtonClicked(object sender, EventArgs args)
+    {
+		var voucher = ((Button)sender).CommandParameter as Voucher;
+        OpenDetailsPage(voucher);
+    }
+
+    async Task OpenDetailsPage(Voucher voucher)
+    {
+        try
+        {
+            await Shell.Current.GoToAsync("/voucherdetail", ((IDictionary<string, object>)new Dictionary<string, object>
+            {
+                { "VoucherId", voucher.Id.ToString() }
+            }));
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", "Error going to voucher detail: " + ex.ToString(), "OK");
+        }
+    }
 }
 

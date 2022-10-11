@@ -18,6 +18,17 @@ public partial class VoucherDetailPage : ContentPage
 		InitializeComponent();
 	}
 
+    public string TemplateHtml = @"
+    <!DOCTYPE html>
+    <html>
+    <head>
+    </head>
+    <body>
+    <h1>Voucher {{voucherId}}</h1>
+    </body>
+    </html>
+    ";
+
 
 	protected override void OnAppearing()
 	{
@@ -29,7 +40,7 @@ public partial class VoucherDetailPage : ContentPage
                 {
                     voucherDetailView.Source = new HtmlWebViewSource
                     {
-                        Html = "<html><body>Voucher Id: " + VoucherId + "</body></html>"
+                        Html =  TemplateHtml.Replace("{{voucherId}}", VoucherId)
                     };
                 }
                 catch (Exception ex)
