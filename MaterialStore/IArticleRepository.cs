@@ -10,4 +10,8 @@ public interface IArticleRepository
     List<Voucher> GetAllVouchers();
 
     VoucherLine AddVoucherLine(VoucherLine voucherLine);
+
+    Voucher GetVoucherById(int id);
+
+    List<VoucherLine> GetVoucherLinesByVoucherId(int voucherId);
 }

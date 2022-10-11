@@ -25,7 +25,9 @@ public partial class VoucherDetailPage : ContentPage
     </head>
     <body>
     <p><button class=""print"">Print</button></p>
-    <h1>Voucher {{voucherId}}</h1>
+    <h1>Bon de Sortie {{voucherId}}</h1>
+    <p>Pour: {{name}}</p>
+    <p>Date de création: {{createdDate}}</p>
     <script>
     let printButton = document.querySelector('.print');
     printButton.addEventListener('click', function () {
@@ -50,9 +52,14 @@ public partial class VoucherDetailPage : ContentPage
 			{
                 try
                 {
+                    int voucherId = int.Parse(VoucherId);
+                    var voucher = ArticleRepository.GetVoucherById(voucherId);
+                    string html = TemplateHtml.Replace("{{voucherId}}", VoucherId)
+                        .Replace("{{name}}", voucher.Name)
+                        .Replace("{{createdDate}}", voucher.CreatedDate.ToString("dd.MM.yyyy"));
                     voucherDetailView.Source = new HtmlWebViewSource
                     {
-                        Html =  TemplateHtml.Replace("{{voucherId}}", VoucherId)
+                        Html =  html
                     };
                 }
                 catch (Exception ex)

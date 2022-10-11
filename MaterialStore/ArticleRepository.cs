@@ -85,4 +85,17 @@ public class ArticleRepository : IArticleRepository
         _conn.Insert(voucherLine);
         return voucherLine;
     }
+
+    public Voucher GetVoucherById(int id)
+    {
+        Init();
+        return _conn.Table<Voucher>().FirstOrDefault(v => v.Id == id);
+    }
+
+    public List<VoucherLine> GetVoucherLinesByVoucherId(int voucherId)
+    {
+        Init();
+        var voucherLines = _conn.Table<VoucherLine>().Where(vl => vl.VoucherId == voucherId).ToList();
+        return voucherLines;
+    }
 }
