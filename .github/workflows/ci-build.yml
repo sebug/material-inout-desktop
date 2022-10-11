@@ -46,7 +46,7 @@ jobs:
       - name: Upload Android Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
-          name: mauibeach-android-ci-build
+          name: materialinout-android-ci-build
           path: bin/Release/net6.0-android/*Signed.a*
 
 # MAUI Windows Build
@@ -75,7 +75,7 @@ jobs:
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
-          name: mauibeach-windows-ci-build
+          name: materialinout-windows-ci-build
           path: bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/material-inout-desktop_1.0.0.1_Test/*.msix
 
 # MAUI iOS Build
@@ -104,7 +104,7 @@ jobs:
       - name: Upload iOS Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
-          name: mauibeach-ios-ci-build
+          name: materialinout-ios-ci-build
           path: bin/Release/net6.0-ios/iossimulator-x64/**/*.app
 
 # MAUI MacCatalyst Build
@@ -133,5 +133,5 @@ jobs:
       - name: Upload MacCatalyst Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
-          name: mauibeach-macos-ci-build
+          name: materialinout-macos-ci-build
           path: bin/Release/net6.0-maccatalyst/maccatalyst-x64/publish/*.pkg

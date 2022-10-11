@@ -24,7 +24,19 @@ public partial class VoucherDetailPage : ContentPage
     <head>
     </head>
     <body>
+    <p><button class=""print"">Print</button></p>
     <h1>Voucher {{voucherId}}</h1>
+    <script>
+    let printButton = document.querySelector('.print');
+    printButton.addEventListener('click', function () {
+        try {
+            window.print();
+        } catch (e) {
+            alert('Erreur impression');
+        }
+        alert('Document imprimé');
+    });
+    </script>
     </body>
     </html>
     ";
@@ -50,15 +62,5 @@ public partial class VoucherDetailPage : ContentPage
 			});
 		});
 	}
-
-    void PrintButtonClicked(object sender, EventArgs args)
-    {
-		PrintPage();
-    }
-
-    async Task PrintPage()
-    {
-        await DisplayAlert("Information", "Bon de sortie imprimé", "OK");
-    }
 }
 

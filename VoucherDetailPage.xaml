@@ -3,12 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="material_inout_desktop.VoucherDetailPage">
 
-    <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
-        <Button x:Name="printButton" Text="Imprimer" HorizontalOptions="End" Clicked="PrintButtonClicked" />
-        <WebView x:Name="voucherDetailView" HeightRequest="600" />
-    </VerticalStackLayout>
+    <WebView x:Name="voucherDetailView" HeightRequest="600" />
 
 </ContentPage>
