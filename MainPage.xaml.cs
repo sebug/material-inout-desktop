@@ -11,6 +11,16 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 	}
 
+	private List<Article> _articles;
+	private List<Article> EnsureArticleList()
+	{
+		if (_articles == null)
+		{
+			_articles = new List<Article>();
+		}
+		return _articles;
+	}
+
 	protected override void OnAppearing()
 	{
 		Task.Run(() =>
@@ -30,8 +40,12 @@ public partial class MainPage : ContentPage
 			var article = ArticleRepository.GetByEAN(text);
 			if (article != null)
 			{
-				scanDisplay.Text = article.Label;
+				var articleList = EnsureArticleList();
+				articleList.Add(article);
+				articlesListView.ItemsSource = articleList.ToList();
 			}
+			((Entry)sender).Text = String.Empty;
+			((Entry)sender).Focus();
 		}
 	}
 }
