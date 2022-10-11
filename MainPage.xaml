@@ -21,6 +21,13 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
+            <Label Text="Nom de la personne:" />
+
+            <Entry x:Name="nameInput" />
+
+            <Button x:Name="createBon"
+                Text="Créer bon de sortie" />
+
 
             <Entry x:Name="barCodeInput"
                    Completed="OnBarCodeInputCompleted" />
@@ -45,7 +52,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            
 
         </VerticalStackLayout>
     </ScrollView>
