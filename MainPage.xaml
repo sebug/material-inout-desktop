@@ -32,10 +32,15 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <Label Text="{Binding EAN}" />
                             <Label Grid.Column="1" Text="{Binding Label}" />
+                            <Button Grid.Column="2"
+                                Text="Enlever"
+                                Clicked="RemoveArticleButtonClicked"
+                                CommandParameter="{Binding}" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

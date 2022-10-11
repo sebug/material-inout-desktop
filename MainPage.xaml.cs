@@ -1,4 +1,5 @@
-﻿using material_inout_desktop.MaterialStore;
+﻿using System.Windows.Input;
+using material_inout_desktop.MaterialStore;
 
 namespace material_inout_desktop;
 
@@ -41,12 +42,36 @@ public partial class MainPage : ContentPage
 			if (article != null)
 			{
 				var articleList = EnsureArticleList();
-				articleList.Add(article);
+				if (!articleList.Any(art => art.EAN == article.EAN))
+				{
+					articleList.Add(article);
+				}
 				articlesListView.ItemsSource = articleList.ToList();
 			}
 			((Entry)sender).Text = String.Empty;
 			((Entry)sender).Focus();
 		}
+	}
+
+	void RemoveArticleButtonClicked(object sender, EventArgs args)
+    {
+		var article = ((Button)sender).CommandParameter as Article;
+		if (article != null)
+		{
+			RemoveArticleFromList(article);
+		}
+		barCodeInput.Focus();
+    }
+
+	public void RemoveArticleFromList(Article article)
+	{
+		if (article == null)
+		{
+			return;
+		}
+		var articleList = EnsureArticleList();
+		_articles = articleList.Where(art => art.EAN != article.EAN).ToList();
+		articlesListView.ItemsSource = _articles;
 	}
 }
 
