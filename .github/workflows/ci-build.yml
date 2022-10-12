@@ -66,6 +66,9 @@ jobs:
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
 
+      - name: Install Sign Tool
+        run: dotnet tool install AzureSignTool
+
       - name: Restore Dependencies
         run: dotnet restore material-inout-desktop.csproj
 

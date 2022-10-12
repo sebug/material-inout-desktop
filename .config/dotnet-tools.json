@@ -7,6 +7,12 @@
       "commands": [
         "maui-check"
       ]
+    },
+    "azuresigntool": {
+      "version": "3.0.0",
+      "commands": [
+        "azuresigntool"
+      ]
     }
   }
 }
