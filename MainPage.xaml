@@ -16,7 +16,8 @@
                 HorizontalOptions="Center" />
 
             <Entry x:Name="barCodeInput"
-                   Completed="OnBarCodeInputCompleted" />
+                   TextChanged="OnBarCodeTextChanged"
+                    />
 
             <CollectionView x:Name="articlesListView" HeightRequest="300">
                 <CollectionView.ItemTemplate>

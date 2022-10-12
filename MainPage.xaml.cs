@@ -33,10 +33,10 @@ public partial class MainPage : ContentPage
 		});
 	}
 
-	void OnBarCodeInputCompleted(object sender, EventArgs e)
+	void OnBarCodeTextChanged(object sender, EventArgs e)
 	{
-   		string text = ((Entry)sender).Text;
-		if (!String.IsNullOrEmpty(text))
+		string text = ((Entry)sender).Text;
+		if (text != null && text.Length >= 13)
 		{
 			var article = ArticleRepository.GetByEAN(text);
 			if (article != null)

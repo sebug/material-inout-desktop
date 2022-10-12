@@ -48,10 +48,10 @@ public partial class ReturnMaterialPage : ContentPage
 		});
 	}
 
-    void OnBarCodeInputCompleted(object sender, EventArgs e)
+    void OnBarCodeTextChanged(object sender, EventArgs e)
 	{
    		string text = ((Entry)sender).Text;
-		if (!String.IsNullOrEmpty(text))
+		if (!String.IsNullOrEmpty(text) && text.Length >= 13)
 		{
             ReturnEAN(text);
 		}
