@@ -183,7 +183,7 @@ Tél. +41 22 774 08 06</p>
                     returnMaterial.IsVisible = !voucher.ReturnedDate.HasValue;
 
                     var voucherLines = ArticleRepository.GetVoucherLinesByVoucherId(voucherId);
-                    html = html.Replace("{{lines}}", GetVoucherLinesTable(voucherLines));
+                    html = html.Replace("{{lines}}", GetVoucherLinesTable(voucherLines, voucher.ReturnedDate.HasValue));
 
                     voucherDetailView.Source = new HtmlWebViewSource
                     {
@@ -198,7 +198,7 @@ Tél. +41 22 774 08 06</p>
 		});
 	}
 
-    private string GetVoucherLinesTable(List<VoucherLine> voucherLines)
+    private string GetVoucherLinesTable(List<VoucherLine> voucherLines, bool includeStatus)
     {
         var sb = new StringBuilder();
         sb.AppendLine("<table>");
@@ -206,6 +206,10 @@ Tél. +41 22 774 08 06</p>
         sb.AppendLine("<tr>");
         sb.AppendLine("<th>EAN</th>");
         sb.AppendLine("<th>Libellé</th>");
+        if (includeStatus)
+        {
+            sb.AppendLine("<th>Statut Retour</th>");
+        }
         sb.AppendLine("</tr>");
         sb.AppendLine("</thead>");
         sb.AppendLine("<tbody>");
@@ -214,6 +218,10 @@ Tél. +41 22 774 08 06</p>
             sb.AppendLine("<tr>");
             sb.AppendLine("<td>" + voucherLine.EAN + "</td>");
             sb.AppendLine("<td>" + voucherLine.Label + "</td>");
+            if (includeStatus)
+            {
+                sb.AppendLine("<td>" + voucherLine.ReturnStatus + "</td>");
+            }
             sb.AppendLine("</tr>");
         }
         sb.AppendLine("</tbody>");
