@@ -23,6 +23,10 @@
         x:Name="personResponsibleLabel"
         HorizontalOptions="Start"
         />
+
+        <Entry x:Name="barCodeInput"
+                   Completed="OnBarCodeInputCompleted"
+                  />
 </VerticalStackLayout>
 
 </ContentPage>

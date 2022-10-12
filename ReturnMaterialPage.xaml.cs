@@ -19,6 +19,7 @@ public partial class ReturnMaterialPage : ContentPage
 		InitializeComponent();
 	}
 
+    private List<VoucherLine> _voucherLines { get; set; }
 
 	protected override void OnAppearing()
 	{
@@ -31,9 +32,11 @@ public partial class ReturnMaterialPage : ContentPage
                     int voucherId = int.Parse(VoucherId);
                     var voucher = ArticleRepository.GetVoucherById(voucherId);
 
-                    var voucherLines = ArticleRepository.GetVoucherLinesByVoucherId(voucherId);
+                    _voucherLines = ArticleRepository.GetVoucherLinesByVoucherId(voucherId);
                     voucherIdLabel.Text = "Numéro du Bon de Sortie: " + voucherId;
                     personResponsibleLabel.Text = "Responsable: " + voucher.Name;
+
+                    barCodeInput.Focus();
                 }
                 catch (Exception ex)
                 {
@@ -42,5 +45,25 @@ public partial class ReturnMaterialPage : ContentPage
 			});
 		});
 	}
+
+    void OnBarCodeInputCompleted(object sender, EventArgs e)
+	{
+   		string text = ((Entry)sender).Text;
+		if (!String.IsNullOrEmpty(text))
+		{
+            ReturnEAN(text);
+		}
+	}
+
+    async Task ReturnEAN(string ean)
+    {
+        var matchingLine = _voucherLines.FirstOrDefault(vl => vl.EAN == ean);
+        if (matchingLine != null)
+        {
+            await DisplayAlert("Information", "De retour: " + matchingLine.Label, "OK");
+        }
+        barCodeInput.Text = String.Empty;
+        barCodeInput.Focus();
+    }
 }
 
