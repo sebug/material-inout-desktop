@@ -180,6 +180,8 @@ Tél. +41 22 774 08 06</p>
                         .Replace("{{returnedPersonName}}", voucher.ReturningPersonName);
                     }
 
+                    returnMaterial.IsVisible = !voucher.ReturnedDate.HasValue;
+
                     var voucherLines = ArticleRepository.GetVoucherLinesByVoucherId(voucherId);
                     html = html.Replace("{{lines}}", GetVoucherLinesTable(voucherLines));
 
