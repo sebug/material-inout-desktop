@@ -82,7 +82,10 @@ public partial class MainPage : ContentPage
 		}
 		_articles = new List<Article>();
 		articlesListView.ItemsSource = _articles;
-		DisplayAlert("Information", "Bon de sortie crée avec ID " + voucher.Id, "OK");
+		Shell.Current.GoToAsync("/voucherdetail", ((IDictionary<string, object>)new Dictionary<string, object>
+            {
+                { "VoucherId", voucher.Id.ToString() }
+            }));
 	}
 
 	public void RemoveArticleFromList(Article article)
