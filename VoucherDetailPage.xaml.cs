@@ -149,7 +149,10 @@ Tél. +41 22 774 08 06</p>
     {
         try
         {
-            await DisplayAlert("Information", "Démarrons le retour du matériel", "OK");
+            await Shell.Current.GoToAsync("/returnmaterial", ((IDictionary<string, object>)new Dictionary<string, object>
+            {
+                { "VoucherId", VoucherId }
+            }));
         }
         catch (Exception ex)
         {

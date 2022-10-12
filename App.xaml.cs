@@ -7,6 +7,7 @@ public partial class App : Application
 		InitializeComponent();
 
 		Routing.RegisterRoute("voucherdetail", typeof(VoucherDetailPage));
+		Routing.RegisterRoute("returnmaterial", typeof(ReturnMaterialPage));
 
 		MainPage = new AppShell();
 	}
