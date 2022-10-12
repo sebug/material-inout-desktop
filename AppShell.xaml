@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:material_inout_desktop">
 
-    <FlyoutItem Title="Sortie Matériel">
+    <FlyoutItem Title="  Sortie Matériel">
     <Tab>
     <ShellContent
         Title="Sortie Matériel"
@@ -13,7 +13,7 @@
         Route="MainPage" />
     </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Bons de Sortie">
+    <FlyoutItem Title="  Bons de Sortie">
         <Tab>
             <ShellContent
                 Title="Bons de Sortie"
@@ -21,7 +21,7 @@
                 Route="VoucherListPage" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Bons de Retour">
+    <FlyoutItem Title="  Bons de Retour">
         <Tab>
             <ShellContent
                 Title="Bons de Retour"
@@ -29,7 +29,7 @@
                 Route="ReturnedVoucherListPage" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Configuration">
+    <FlyoutItem Title="  Configuration">
     <Tab>
         <ShellContent
         Title="Configuration"
@@ -37,7 +37,7 @@
         Route="ConfigurationPage" />
     </Tab>
     </FlyoutItem>
-        <FlyoutItem Title="Importer Liste des Articles">
+        <FlyoutItem Title="  Importer Liste des Articles">
     <Tab>
         <ShellContent
         Title="Importer Liste des Articles"
