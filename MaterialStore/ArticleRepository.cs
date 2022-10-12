@@ -122,18 +122,30 @@ public class ArticleRepository : IArticleRepository
     public List<Voucher> GetAllNonReturnedVouchers()
     {
         Init();
-        return _conn.Table<Voucher>()
+        var result = _conn.Table<Voucher>()
         .ToList()
         .OrderByDescending(v => v.CreatedDate)
         .Where(v => !v.ReturnedDate.HasValue).ToList();
+        foreach (var voucher in result)
+        {
+            voucher.VoucherLineCount =
+                _conn.Table<VoucherLine>().Count(line => line.VoucherId == voucher.Id);
+        }
+        return result;
     }
 
     public List<Voucher> GetReturnedVouchers()
     {
         Init();
-        return _conn.Table<Voucher>()
+        var result = _conn.Table<Voucher>()
         .ToList()
         .OrderByDescending(v => v.ReturnedDate)
         .Where(v => v.ReturnedDate.HasValue).ToList();
+        foreach (var voucher in result)
+        {
+            voucher.VoucherLineCount =
+                _conn.Table<VoucherLine>().Count(line => line.VoucherId == voucher.Id);
+        }
+        return result;
     }
 }
