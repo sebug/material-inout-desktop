@@ -48,6 +48,16 @@ public partial class VoucherDetailPage : ContentPage
     h1 {
         clear: both;
     }
+    .print-options button
+    {
+        color: #fff;
+        background-color: #aa4400;
+        font-size: 18px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
     @media print {
         .print-options {
             display: none;
@@ -113,6 +123,16 @@ Tél. +41 22 774 08 06</p>
     }
     h1 {
         clear: both;
+    }
+    .print-options button
+    {
+        color: #fff;
+        background-color: #aa4400;
+        font-size: 18px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
     @media print {
         .print-options {
