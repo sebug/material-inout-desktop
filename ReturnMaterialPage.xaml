@@ -48,6 +48,9 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
+            <Label Text="Nom de la personne confirmant le retour:" />
+
+            <Entry x:Name="nameInput" />
 
             <Button x:Name="confirmButton"
             Text="Confirmer le retour"

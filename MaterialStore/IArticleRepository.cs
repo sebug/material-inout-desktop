@@ -15,5 +15,7 @@ public interface IArticleRepository
 
     Voucher GetVoucherById(int id);
 
+    Voucher UpdateVoucher(Voucher voucher);
+
     List<VoucherLine> GetVoucherLinesByVoucherId(int voucherId);
 }

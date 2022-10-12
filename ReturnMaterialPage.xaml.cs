@@ -145,6 +145,12 @@ public partial class ReturnMaterialPage : ContentPage
     {
         try
         {
+            string returningPersonName = nameInput.Text;
+            if (String.IsNullOrEmpty(returningPersonName))
+            {
+                await DisplayAlert("Erreur", "Veuillez rentrer le nom de la personne qui confirme le retour", "OK");
+                return;
+            }
             if (_voucherLines.Any(vl => String.IsNullOrEmpty(vl.ReturnStatus)))
             {
                 var notReturnedLines = _voucherLines.Where(vl => String.IsNullOrEmpty(vl.ReturnStatus))
@@ -157,6 +163,11 @@ public partial class ReturnMaterialPage : ContentPage
             {
                 ArticleRepository.ReturnVoucherLine(voucherLine.Id, voucherLine.ReturnStatus);
             }
+            int voucherId = int.Parse(VoucherId);
+            var voucher = ArticleRepository.GetVoucherById(voucherId);
+            voucher.ReturnedDate = DateTimeOffset.Now;
+            voucher.ReturningPersonName = returningPersonName;
+            ArticleRepository.UpdateVoucher(voucher);
         }
         catch (Exception ex)
         {

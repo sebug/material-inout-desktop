@@ -111,4 +111,10 @@ public class ArticleRepository : IArticleRepository
         _conn.Update(voucherLine);
         return voucherLine;
     }
+
+    public Voucher UpdateVoucher(Voucher voucher)
+    {
+        _conn.Update(voucher);
+        return voucher;
+    }
 }

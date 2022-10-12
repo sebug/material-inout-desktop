@@ -14,6 +14,8 @@ public class Voucher
 
     public DateTimeOffset? ReturnedDate { get; set; }
 
+    public string ReturningPersonName { get; set; }
+
     [Ignore]
     public int VoucherLineCount { get; set; }
 }
