@@ -36,6 +36,8 @@ public partial class ReturnMaterialPage : ContentPage
                     voucherIdLabel.Text = "Numéro du Bon de Sortie: " + voucherId;
                     personResponsibleLabel.Text = "Responsable: " + voucher.Name;
 
+                    voucherLinesListView.ItemsSource = _voucherLines.ToList();
+
                     barCodeInput.Focus();
                 }
                 catch (Exception ex)
@@ -57,13 +59,81 @@ public partial class ReturnMaterialPage : ContentPage
 
     async Task ReturnEAN(string ean)
     {
-        var matchingLine = _voucherLines.FirstOrDefault(vl => vl.EAN == ean);
-        if (matchingLine != null)
+        try
         {
-            await DisplayAlert("Information", "De retour: " + matchingLine.Label, "OK");
+            var matchingLine = _voucherLines.FirstOrDefault(vl => vl.EAN == ean);
+            if (matchingLine != null)
+            {
+                _voucherLines = _voucherLines.Select(vl => {
+                    if (vl.Id == matchingLine.Id)
+                    {
+                        return new VoucherLine
+                        {
+                            Id = matchingLine.Id,
+                            VoucherId = matchingLine.VoucherId,
+                            EAN = matchingLine.EAN,
+                            Label = matchingLine.Label,
+                            ReturnStatus = "Retourné"
+                        };
+                    }
+                    else
+                    {
+                        return vl;
+                    }
+                }).ToList();
+            }
+            voucherLinesListView.ItemsSource = _voucherLines.ToList();
+            barCodeInput.Text = String.Empty;
+            barCodeInput.Focus();
         }
-        barCodeInput.Text = String.Empty;
-        barCodeInput.Focus();
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", "Erreur de retour: " + ex.ToString(), "OK");
+        }
+    }
+
+    void MarkAsReturned(object sender, EventArgs e)
+    {
+        try 
+        {
+            var button = (Button)sender;
+            ReturnManually((VoucherLine)button.CommandParameter);
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Error", "Erreur de retour manuel: " + ex.ToString(), "OK");
+        }
+    }
+
+    async Task ReturnManually(VoucherLine voucherLine)
+    {
+        try 
+        {
+            _voucherLines = _voucherLines.Select(vl => {
+                if (vl.Id == voucherLine.Id)
+                {
+                    return new VoucherLine
+                    {
+                        Id = voucherLine.Id,
+                        VoucherId = voucherLine.VoucherId,
+                        EAN = voucherLine.EAN,
+                        Label = voucherLine.Label,
+                        ReturnStatus = "Retour Manuel"
+                    };
+                }
+                else
+                {
+                    return vl;
+                }
+            }).ToList();
+            voucherLinesListView.ItemsSource = _voucherLines.ToList();
+            barCodeInput.Text = String.Empty;
+            barCodeInput.Focus();
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", "Erreur de retour manuel: " + ex.ToString(), "OK");
+        }
     }
 }
 

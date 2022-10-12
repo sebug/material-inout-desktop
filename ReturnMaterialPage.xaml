@@ -27,6 +27,26 @@
         <Entry x:Name="barCodeInput"
                    Completed="OnBarCodeInputCompleted"
                   />
+
+
+        <CollectionView x:Name="voucherLinesListView">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="{Binding Label}" />
+                            <Label Grid.Column="1" Text="{Binding ReturnStatus}" />
+                            <Button Grid.Column="2" Text="Marquer Comme Retourné"
+                            CommandParameter="{Binding}" Clicked="MarkAsReturned" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 </VerticalStackLayout>
 
 </ContentPage>

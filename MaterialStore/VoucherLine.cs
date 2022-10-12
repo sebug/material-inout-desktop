@@ -16,4 +16,6 @@ public class VoucherLine
     public string EAN { get; set; }
 
     public string Label { get; set; }
+
+    public string ReturnStatus { get; set; }
 }
