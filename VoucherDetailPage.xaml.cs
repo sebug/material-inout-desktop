@@ -139,5 +139,22 @@ Tél. +41 22 774 08 06</p>
         sb.AppendLine("</table>");
         return sb.ToString();
     }
+
+    void ReturnMaterialButtonClicked(object sender, EventArgs args)
+    {
+		ReturnMaterial();
+    }
+
+    async Task ReturnMaterial()
+    {
+        try
+        {
+            await DisplayAlert("Information", "Démarrons le retour du matériel", "OK");
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", "Erreur de retour de matériel: " + ex.ToString(), "OK");
+        }
+    }
 }
 

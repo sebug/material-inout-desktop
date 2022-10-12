@@ -3,6 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="material_inout_desktop.VoucherDetailPage">
 
+<VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+
+            <Button x:Name="returnMaterial"
+            Text="Retourner"
+            Clicked="ReturnMaterialButtonClicked" />
+
+
     <WebView x:Name="voucherDetailView" HeightRequest="600" />
+</VerticalStackLayout>
 
 </ContentPage>
