@@ -168,6 +168,10 @@ public partial class ReturnMaterialPage : ContentPage
             voucher.ReturnedDate = DateTimeOffset.Now;
             voucher.ReturningPersonName = returningPersonName;
             ArticleRepository.UpdateVoucher(voucher);
+            await Shell.Current.GoToAsync("/voucherdetail", ((IDictionary<string, object>)new Dictionary<string, object>
+            {
+                { "VoucherId", VoucherId }
+            }));
         }
         catch (Exception ex)
         {
