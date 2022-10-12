@@ -25,15 +25,13 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
 
                             <Label Text="{Binding Id}" />
                             <Label Grid.Column="1" Text="{Binding Name}" />
                             <Label Grid.Column="2" Text="{Binding VoucherLineCount}" />
                             <Label Grid.Column="3" Text="{Binding Path=CreatedDate, StringFormat='{0:dd.MM.yyyy}'}" />
-                            <Label Grid.Column="4" Text="{Binding Path=ReturnedDate, StringFormat='{0:dd.MM.yyyy}'}" />
-                            <Button Grid.Column="5" Text="Afficher"
+                            <Button Grid.Column="4" Text="Afficher"
                             CommandParameter="{Binding}" Clicked="ShowVoucherDetailsButtonClicked" />
                         </Grid>
                     </DataTemplate>

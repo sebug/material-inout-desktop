@@ -9,6 +9,10 @@ public interface IArticleRepository
 
     List<Voucher> GetAllVouchers();
 
+    List<Voucher> GetAllNonReturnedVouchers();
+
+    List<Voucher> GetReturnedVouchers();
+
     VoucherLine AddVoucherLine(VoucherLine voucherLine);
 
     VoucherLine ReturnVoucherLine(int id, string returnText);

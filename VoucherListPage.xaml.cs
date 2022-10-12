@@ -21,8 +21,8 @@ public partial class VoucherListPage : ContentPage
 			{
                 try
                 {
-                    var allVouchers = ArticleRepository.GetAllVouchers();
-                    vouchersListView.ItemsSource = allVouchers;
+                    var nonReturnedVouchers = ArticleRepository.GetAllNonReturnedVouchers();
+                    vouchersListView.ItemsSource = nonReturnedVouchers;
                 }
                 catch (Exception ex)
                 {

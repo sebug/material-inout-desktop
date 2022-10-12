@@ -114,7 +114,26 @@ public class ArticleRepository : IArticleRepository
 
     public Voucher UpdateVoucher(Voucher voucher)
     {
+        Init();
         _conn.Update(voucher);
         return voucher;
+    }
+
+    public List<Voucher> GetAllNonReturnedVouchers()
+    {
+        Init();
+        return _conn.Table<Voucher>()
+        .ToList()
+        .OrderByDescending(v => v.CreatedDate)
+        .Where(v => !v.ReturnedDate.HasValue).ToList();
+    }
+
+    public List<Voucher> GetReturnedVouchers()
+    {
+        Init();
+        return _conn.Table<Voucher>()
+        .ToList()
+        .OrderByDescending(v => v.ReturnedDate)
+        .Where(v => v.ReturnedDate.HasValue).ToList();
     }
 }
