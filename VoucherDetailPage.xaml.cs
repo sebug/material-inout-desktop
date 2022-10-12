@@ -51,7 +51,7 @@ public partial class VoucherDetailPage : ContentPage
     </style>
     </head>
     <body>
-    <p><button class=""print"">Print</button></p>
+    <p class=""print-options""><button class=""print"">Print</button></p>
     <p class=""logo""><img width=""200"" src=""{{logo_url}}"" /></p>
     <p class=""address"">ORPC Valavran,<br />
 Rue du Village 27<br />
