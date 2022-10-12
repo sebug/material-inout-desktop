@@ -21,6 +21,14 @@
                 Route="VoucherListPage" />
         </Tab>
     </FlyoutItem>
+    <FlyoutItem Title="Bons de Retour">
+        <Tab>
+            <ShellContent
+                Title="Bons de Retour"
+                ContentTemplate="{DataTemplate local:ReturnedVoucherListPage}"
+                Route="ReturnedVoucherListPage" />
+        </Tab>
+    </FlyoutItem>
     <FlyoutItem Title="Configuration">
     <Tab>
         <ShellContent
