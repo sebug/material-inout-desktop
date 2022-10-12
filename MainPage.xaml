@@ -9,23 +9,16 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
-                Source="orpc_logo.png"
-                SemanticProperties.Description="ORPC Valavran"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
             <Label
-                Text="Material In/Out"
+                Text="Matériel In/Out"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-
             <Entry x:Name="barCodeInput"
                    Completed="OnBarCodeInputCompleted" />
 
-            <CollectionView x:Name="articlesListView" HeightRequest="400">
+            <CollectionView x:Name="articlesListView" HeightRequest="300">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
