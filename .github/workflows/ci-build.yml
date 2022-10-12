@@ -76,7 +76,7 @@ jobs:
         run: dotnet publish material-inout-desktop.csproj -c Release -f net6.0-windows10.0.19041.0 --no-restore
 
       - name: Sign MSIX
-        run: dotnet tool run AzureSignTool -- sign -kvu "${{ secrets.AZUREKEYVAULTURL }}" -kvi "${{ secrets.AZUREKEYVAULTCLIENTID }}" -kvs "${{ secrets.AZUREKEYVAULTCLIENTSECRET }}" -kvc "${{ secrets.AZUREKEYVAULTNAME }}" -tr http://timestamp.digicert.com -v bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/material-inout-desktop_1.0.0.1_Test/material-inout-desktop_1.0.0.1_x64.msix
+        run: dotnet tool run AzureSignTool -- sign -kvt "${{ secrets.AZUREKEYVAULTTENANTID }}" -kvu "${{ secrets.AZUREKEYVAULTURL }}" -kvi "${{ secrets.AZUREKEYVAULTCLIENTID }}" -kvs "${{ secrets.AZUREKEYVAULTCLIENTSECRET }}" -kvc "${{ secrets.AZUREKEYVAULTNAME }}" -tr http://timestamp.digicert.com -v bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/material-inout-desktop_1.0.0.1_Test/material-inout-desktop_1.0.0.1_x64.msix
 
       - name: Upload Windows Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
