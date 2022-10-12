@@ -135,5 +135,29 @@ public partial class ReturnMaterialPage : ContentPage
             await DisplayAlert("Error", "Erreur de retour manuel: " + ex.ToString(), "OK");
         }
     }
+
+    void ConfirmButtonClicked(object sender, EventArgs args)
+    {
+		ConfirmMaterialReturn();
+    }
+
+    async Task ConfirmMaterialReturn()
+    {
+        try
+        {
+            if (_voucherLines.Any(vl => String.IsNullOrEmpty(vl.ReturnStatus)))
+            {
+                var notReturnedLines = _voucherLines.Where(vl => String.IsNullOrEmpty(vl.ReturnStatus))
+                .ToList();
+                await DisplayAlert("Erreur", "Pas retourné: " +
+                String.Join(", ", notReturnedLines.Select(vl => vl.Label)), "OK");
+                return;
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", "Erreur de retour de matériel: " + ex.ToString(), "OK");
+        }
+    }
 }
 

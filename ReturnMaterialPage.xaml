@@ -29,7 +29,7 @@
                   />
 
 
-        <CollectionView x:Name="voucherLinesListView">
+        <CollectionView x:Name="voucherLinesListView" HeightRequest="300">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -47,6 +47,11 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
+
+            <Button x:Name="confirmButton"
+            Text="Confirmer le retour"
+            Clicked="ConfirmButtonClicked" />
 </VerticalStackLayout>
 
 </ContentPage>
