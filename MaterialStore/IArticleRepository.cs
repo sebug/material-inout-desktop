@@ -11,6 +11,8 @@ public interface IArticleRepository
 
     VoucherLine AddVoucherLine(VoucherLine voucherLine);
 
+    VoucherLine ReturnVoucherLine(int id, string returnText);
+
     Voucher GetVoucherById(int id);
 
     List<VoucherLine> GetVoucherLinesByVoucherId(int voucherId);

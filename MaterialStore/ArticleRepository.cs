@@ -98,4 +98,17 @@ public class ArticleRepository : IArticleRepository
         var voucherLines = _conn.Table<VoucherLine>().Where(vl => vl.VoucherId == voucherId).ToList();
         return voucherLines;
     }
+
+    public VoucherLine ReturnVoucherLine(int id, string returnText)
+    {
+        Init();
+        var voucherLine = _conn.Table<VoucherLine>().FirstOrDefault(vl => vl.Id == id);
+        if (voucherLine == null)
+        {
+            throw new Exception("Could not find voucher line " + id);
+        }
+        voucherLine.ReturnStatus = returnText;
+        _conn.Update(voucherLine);
+        return voucherLine;
+    }
 }

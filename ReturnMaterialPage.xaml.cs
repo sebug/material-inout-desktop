@@ -153,6 +153,10 @@ public partial class ReturnMaterialPage : ContentPage
                 String.Join(", ", notReturnedLines.Select(vl => vl.Label)), "OK");
                 return;
             }
+            foreach (var voucherLine in _voucherLines)
+            {
+                ArticleRepository.ReturnVoucherLine(voucherLine.Id, voucherLine.ReturnStatus);
+            }
         }
         catch (Exception ex)
         {
