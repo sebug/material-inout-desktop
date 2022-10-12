@@ -85,6 +85,74 @@ Tél. +41 22 774 08 06</p>
     </html>
     ";
 
+    public string ReturnedTemplateHtml = @"
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <style>
+    body {
+        font-family: sans-serif;
+    }
+    th {
+        text-align: left;
+        padding-left: 1em;
+    }
+    td {
+        padding-left: 1em;
+    }
+    .signature {
+        padding-bottom: 5em;
+        border-bottom: 1px solid black;
+    }
+    .address {
+        float: right;
+    }
+    .logo {
+        clear: left;
+        float: left;
+    }
+    h1 {
+        clear: both;
+    }
+    @media print {
+        .print-options {
+            display: none;
+        }
+    }
+    </style>
+    </head>
+    <body>
+    <p class=""print-options""><button class=""print"">Imprimer</button></p>
+    <p class=""logo""><img width=""200"" src=""{{logo_url}}"" /></p>
+    <p class=""address"">ORPC Valavran,<br />
+Rue du Village 27<br />
+1294 Genthod<br />
+Tél. +41 22 774 08 06</p>
+    <h1>Bon de Retour {{voucherId}}</h1>
+    <p>Responsable: {{name}}</p>
+    <p>Date de création: {{createdDate}}</p>
+    <p>Date de retour: {{returnedDate}}</p>
+    <p>Personne confirmant le retour: {{returnedPersonName}}</p>
+
+    {{lines}}
+
+    <p class=""signature"">Signature</p>
+
+    <script>
+    let printButton = document.querySelector('.print');
+    printButton.addEventListener('click', function () {
+        try {
+            window.print();
+        } catch (e) {
+            alert('Erreur impression');
+        }
+        alert('Document imprimé');
+    });
+    </script>
+    </body>
+    </html>
+    ";
+
 
 	protected override void OnAppearing()
 	{
@@ -96,10 +164,21 @@ Tél. +41 22 774 08 06</p>
                 {
                     int voucherId = int.Parse(VoucherId);
                     var voucher = ArticleRepository.GetVoucherById(voucherId);
-                    string html = TemplateHtml.Replace("{{voucherId}}", VoucherId)
+                    string html = TemplateHtml;
+                    if (voucher.ReturnedDate.HasValue)
+                    {
+                        html = ReturnedTemplateHtml;
+                    }
+                    html = html.Replace("{{voucherId}}", VoucherId)
                         .Replace("{{name}}", voucher.Name)
                         .Replace("{{createdDate}}", voucher.CreatedDate.ToString("dd.MM.yyyy"))
                         .Replace("{{logo_url}}", OrganizationLogo.DATA_URL);
+                    
+                    if (voucher.ReturnedDate.HasValue)
+                    {
+                        html = html.Replace("{{returnedDate}}", voucher.ReturnedDate.Value.ToString("dd.MM.yyyy"))
+                        .Replace("{{returnedPersonName}}", voucher.ReturningPersonName);
+                    }
 
                     var voucherLines = ArticleRepository.GetVoucherLinesByVoucherId(voucherId);
                     html = html.Replace("{{lines}}", GetVoucherLinesTable(voucherLines));
