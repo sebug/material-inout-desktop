@@ -3,6 +3,7 @@ using Windows.Storage;
 using Windows.Graphics.Printing;
 using Microsoft.UI.Xaml.Printing;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml;
 
 [assembly: Dependency(typeof(material_inout_desktop.UWP.PrintService))]
 
