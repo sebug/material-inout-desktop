@@ -1,6 +1,7 @@
 using Android.Content;
 using Android.Print;
 
+[assembly: Dependency(typeof(material_inout_desktop.Droid.PrintService))]
 namespace material_inout_desktop.Droid;
 
 class PrintService : IPrintService
