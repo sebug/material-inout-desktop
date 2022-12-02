@@ -1,6 +1,6 @@
-[assembly: Dependency(typeof(material_inout_desktop.UWP.PrintService))]
-
 using Windows.Storage.Streams;
+
+[assembly: Dependency(typeof(material_inout_desktop.UWP.PrintService))]
 
 namespace material_inout_desktop.UWP;
 
