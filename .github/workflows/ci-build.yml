@@ -70,7 +70,7 @@ jobs:
         run: dotnet tool install AzureSignTool
 
       - name: Restore Dependencies
-        run: dotnet restore material-inout-desktop.csproj
+        run: dotnet restore material-inout-desktop.csproj -p:PublishReadyToRun=true
 
       - name: Build MAUI Windows
         run: dotnet publish material-inout-desktop.csproj -c Release -f net7.0-windows10.0.19041.0 --no-restore
