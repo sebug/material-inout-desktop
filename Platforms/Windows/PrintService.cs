@@ -1,4 +1,5 @@
 using Windows.Storage.Streams;
+using Windows.Storage;
 using Microsoft.UI.Xaml.Printing;
 
 [assembly: Dependency(typeof(material_inout_desktop.UWP.PrintService))]
