@@ -4,6 +4,8 @@ using Windows.Graphics.Printing;
 using Microsoft.UI.Xaml.Printing;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Popups;
+using Microsoft.UI.Core;
 
 [assembly: Dependency(typeof(material_inout_desktop.UWP.PrintService))]
 
@@ -110,7 +112,7 @@ public  class PrintService : IPrintService
         printMan.PrintTaskRequested += PrintTaskRequested;
     }
     
-    Image imageCtrl = new Image();
+    Microsoft.UI.Xaml.Controls.Image imageCtrl = new Microsoft.UI.Xaml.Controls.Image();
     private async void AddPrintPages(object sender, AddPagesEventArgs e)
     {
         try
