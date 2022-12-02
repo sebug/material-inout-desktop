@@ -29,10 +29,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
 
-      - name: Setup .NET 6
+      - name: Setup .NET 7
         uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
           
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
@@ -58,10 +58,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
 
-      - name: Setup .NET 6
+      - name: Setup .NET 7
         uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
 
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
@@ -84,7 +84,7 @@ jobs:
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
           name: materialinout-windows-ci-build
-          path: bin/Release/net6.0-windows10.0.19041.0/win10-x64/AppPackages/material-inout-desktop_1.0.0.1_Test/*.msix
+          path: bin/Release/net7.0-windows10.0.19041.0/win10-x64/AppPackages/material-inout-desktop_1.0.0.1_Test/*.msix
 
 # MAUI iOS Build
   build-ios:
@@ -95,10 +95,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
 
-      - name: Setup .NET 6
+      - name: Setup .NET 7
         uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
 
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
@@ -124,10 +124,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b
 
-      - name: Setup .NET 6
+      - name: Setup .NET 7
         uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: 7.0.x
 
       - name: Install MAUI Workload
         run: dotnet workload install maui --ignore-failed-sources
