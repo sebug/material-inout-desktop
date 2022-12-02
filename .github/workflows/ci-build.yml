@@ -136,10 +136,10 @@ jobs:
         run: dotnet restore material-inout-desktop.csproj
 
       - name: Build MAUI MacCatalyst
-        run: dotnet publish material-inout-desktop.csproj -c Release -f net7.0-maccatalyst -a x64 --os maccatalyst --no-restore -p:BuildIpa=True
+        run: dotnet publish material-inout-desktop.csproj -c Release -f net7.0-maccatalyst --no-restore -p:BuildIpa=True
 
       - name: Upload MacCatalyst Artifact
         uses: actions/upload-artifact@3cea5372237819ed00197afe530f5a7ea3e805c8
         with:
           name: materialinout-macos-ci-build
-          path: bin/Release/net7.0-maccatalyst/maccatalyst-x64/publish/*.pkg
+          path: bin/Release/net7.0-maccatalyst/maccatalyst-arm64/publish/*.pkg
