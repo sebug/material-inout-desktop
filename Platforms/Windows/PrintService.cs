@@ -4,8 +4,8 @@ using Windows.Graphics.Printing;
 using Microsoft.UI.Xaml.Printing;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
-using Microsoft.UI.Popups;
-using Microsoft.UI.Core;
+using Windows.UI.Popups;
+using Windows.UI.Core;
 
 [assembly: Dependency(typeof(material_inout_desktop.UWP.PrintService))]
 
