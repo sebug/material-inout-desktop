@@ -1,5 +1,7 @@
 [assembly: Dependency(typeof(material_inout_desktop.UWP.PrintService))]
 
+using Windows.Storage.Streams;
+
 namespace material_inout_desktop.UWP;
 
 public  class PrintService : IPrintService
