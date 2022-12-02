@@ -4,6 +4,7 @@ using Windows.Graphics.Printing;
 using Microsoft.UI.Xaml.Printing;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
+using Windows.Foundation;
 using Windows.UI.Popups;
 using Windows.UI.Core;
 
