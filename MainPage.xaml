@@ -6,8 +6,7 @@
     <ScrollView>
         <VerticalStackLayout
             Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+            Padding="30,0">
 
             <Label
                 Text="Matériel In/Out"
@@ -19,7 +18,7 @@
                    TextChanged="OnBarCodeTextChanged"
                     />
 
-            <CollectionView x:Name="articlesListView" HeightRequest="300">
+            <CollectionView x:Name="articlesListView" HeightRequest="200">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -34,7 +33,8 @@
                             <Button Grid.Column="2"
                                 Text="Enlever"
                                 Clicked="RemoveArticleButtonClicked"
-                                CommandParameter="{Binding}" />
+                                CommandParameter="{Binding}"
+                                Padding="1,1" />
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

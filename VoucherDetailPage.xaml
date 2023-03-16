@@ -5,8 +5,7 @@
 
 <VerticalStackLayout
             Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+            Padding="30,0">
 
 
             <Button x:Name="returnMaterial"
